@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-12">
+    <i class="fas fa-times fa-2x text times" (click)="close()"></i>
+    <h1 class="text">
+      GROUPS
+    </h1>
+  </div>
+  <div class="col-12 mt-2">
+    <div class="row">
+      <div *ngIf="!toggle; else noItems" class="col-12 wrapper">
+        <div *ngFor="let group of groups">
+          <div class="item" (click)="onClick(group.groupId)" [ngStyle]="{'pointer-events': (group?.invited) ? 'none' : 'all' }">
+            <h4><i class="fas fa-user-circle"></i>
+              {{ (group.name?.length>15)? (group.name | slice:0:15)+'..':(group.name) }}</h4>
+            <p>{{ group?.invited ? 'Invited.' : 'Click to invite...' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noItems>
+  <p class="text">There are no groups</p>
+</ng-template>
+

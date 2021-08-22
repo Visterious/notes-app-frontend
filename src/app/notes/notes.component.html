@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-12">
+    <h1 class="text">
+      NOTES
+    </h1>
+  </div>
+  <div class="col-12">
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <form id="searchForm">
+          <div>
+            <input placeholder="Search..." type="search" (input)="search($event)">
+          </div>
+        </form>
+      </div>
+      <div class="col-12 col-sm-6">
+        <select #selectList class="rounded" name="sorts" (change)="selectSort(selectList.value)">
+          <option value="sortName">Sort by name</option>
+          <option value="dsortName">Descending sort by name</option>
+          <option value="sortDate" selected>Sort by date</option>
+          <option value="dsortDate">Descending sort by date</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 mt-2">
+    <div class="row">
+      <div *ngFor="let note of notes" class="col-12 col-sm-6 col-lg-4 wrapper">
+        <div class="item" (click)="onUpdate(note.noteId)">
+          <h4>{{ (note.name?.length>15)? (note.name | slice:0:15)+'..':(note.name) }}</h4>
+          <div class="textbox">
+            <span>{{ note.text }}</span>
+          </div>
+          <span class="float-right info">{{ note.createdOn | date:'short' }} <i class="fas fa-calendar"></i></span>
+          <span class="float-left info"><i class="fas fa-user"></i>
+            {{ (note.username?.length>15)? (note.username | slice:0:15)+'..':(note.username) }}</span>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 wrapper">
+        <div class="item create-item" (click)="onCreate()">
+          <i class="fas fa-plus-square fa-2x"></i>
+          <h6>CREATE NOTE</h6>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 wrapper">
+        <div class="item delete-item" (click)="onDelete()">
+          <i class="fas fa-sign-out fa-2x" [ngClass]="{'fa-trash': userId == creatorId, 'fa-sign-out-alt': userId != creatorId}"></i>
+          <h6>{{ userId == creatorId ? 'DELETE GROUP' : 'LEAVE GROUP' }}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

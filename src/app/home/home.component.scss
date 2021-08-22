@@ -1,0 +1,31 @@
+.item {
+  display: inline-block;
+  border: 1px solid #3d88b6;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 20px 0;
+  width: 100%;
+  text-align: center;
+  background-color: #48bbf0;
+  color: #ffffff;
+  outline: none;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.6);
+  cursor: pointer;
+
+  h4 {
+    margin-top: 10px;
+    padding: 10px;
+  }
+}
+
+.item:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 5px rgba(0,0,0,0.6);
+  background-color: #48c5fa;
+}
+
+.item:active {
+  transform: translate(0px, 0px);
+  background-color: #48b1e6;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.6);
+}

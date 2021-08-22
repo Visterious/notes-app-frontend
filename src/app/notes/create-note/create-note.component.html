@@ -1,0 +1,28 @@
+<div class="col-12 ">
+  <h1 class="text">CREATE GROUP</h1>
+  <div *ngIf="error" class="alert alert-danger error" style="color: #ff5a60">{{error}}</div>
+  <form [formGroup]="createForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <input class="form-control" formControlName="name" type="text" placeholder="Note name..."
+             [ngClass]="{ 'is-invalid': submitted && f.name.errors }" required>
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required" style="color: #ff5a60">Name is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" rows="5" formControlName="text" type="text" placeholder="Note..."
+                  [ngClass]="{ 'is-invalid': submitted && f.text.errors }"
+                  required></textarea>
+      <div *ngIf="submitted && f.text.errors" class="invalid-feedback">
+        <div *ngIf="f.text.errors.required" style="color: #ff5a60">Note is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-main"  type="submit">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Save
+      </button>
+      <button class="btn" type="reset" (click)="close()">Close</button>
+    </div>
+  </form>
+</div>

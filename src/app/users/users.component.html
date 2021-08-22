@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-12">
+    <h1 class="text">
+      USERS
+    </h1>
+  </div>
+  <div class="col-12">
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <form id="searchForm">
+          <div>
+            <input placeholder="Search..." type="search" (input)="search($event)">
+          </div>
+        </form>
+      </div>
+      <div class="col-12 col-sm-6">
+        <select #selectList class="rounded" name="sorts" (change)="selectSort(selectList.value)">
+          <option value="sortName">Sort by name</option>
+          <option value="dsortName">Descending sort by name</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 mt-2">
+    <div class="row">
+      <div *ngFor="let user of users" class="col-12 col-sm-6 col-lg-4 wrapper">
+        <div class="item" (click)="onClick(user.userId)">
+          <h4><i class="fas fa-user-circle"></i>
+            {{ (user.username?.length>15)? (user.username | slice:0:15)+'..':(user.username) }}</h4>
+          <p>Click to invite...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
